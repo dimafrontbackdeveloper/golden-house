@@ -1,0 +1,39 @@
+.title {
+    font-weight: bold;
+    font-size: calc(24px + 42 * ((100vw - 320px) / 1600));
+    line-heigh: calc(30px + 42 * ((100vw - 320px) / 1600));
+    margin-bottom: calc(25px + 55 * ((100vw - 320px) / 1600));
+}
+
+.button {
+    border-radius: calc(3px + 2 * ((100vw - 320px) / 1600));
+    transition: -webkit-filter 0.2s;
+    transition: filter 0.2s;
+    transition: filter 0.2s, -webkit-filter 0.2s;
+    color: #000;
+    cursor: pointer;
+}
+
+.button:hover {
+    -webkit-filter: brightness(1.2);
+    filter: brightness(1.2);
+}
+
+@media screen and (max-width: 768px) {
+    .button {
+        -webkit-filter: brightness(1.2);
+        filter: brightness(1.2);
+    }
+}
+
+.input {
+    background: #ffffff;
+    border-radius: 5px;
+    outline: none;
+    padding-right: 20px;
+}
+
+.section {
+    padding-top: calc(60px + 140 * ((100vw - 320px) / 1600));
+    padding-bottom: calc(60px + 140 * ((100vw - 320px) / 1600));
+}

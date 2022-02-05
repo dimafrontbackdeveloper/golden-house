@@ -1,0 +1,35 @@
+@import './mixins';
+
+.title {
+  font-weight: bold;
+  @include adaptiv-value('font-size', 66, 24, 0);
+  @include adaptiv-value('line-heigh', 72, 30, 0);
+  @include adaptiv-value('margin-bottom', 80, 25, 0);
+}
+
+.button {
+  @include adaptiv-value('border-radius', 5, 3, 0);
+  transition: filter 0.2s;
+  color: #000;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+
+  @include breakpoint(768px) {
+    filter: brightness(1.2);
+  }
+}
+
+.input {
+  background: #ffffff;
+  border-radius: 5px;
+  outline: none;
+  padding-right: 20px;
+}
+
+.section {
+  @include adaptiv-value('padding-top', 200, 60, 0);
+  @include adaptiv-value('padding-bottom', 200, 60, 0);
+}
