@@ -1,6 +1,1 @@
-.wrapper {
-  min-height: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
+.wrapper{min-height:100%;overflow:hidden;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}

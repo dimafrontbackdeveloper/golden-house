@@ -1,3 +1,13 @@
+// // убрать всем кнопкам стандартно поведение перезагрузки страницы
+// const allButtons = document.getElementsByTagName('.button');
+
+// for (let i = 0; i < allButtons.length; i++) {
+//   allButtons[i].addEventListener('click', (e) => {
+//     e.preventDefault();
+//   });
+// }
+
+// при загрузке дом, показать контент
 document.addEventListener('DOMContentLoaded', async () => {
   const loadBG = document.querySelector('.load-bg'),
     loadBGLogo = document.querySelector('.load-bg__logo'),
@@ -73,69 +83,73 @@ headerNavItems.forEach((item) => {
 });
 
 // Всплытие попапа регистрации/логина
-const authButtons = document.querySelectorAll('.auth'),
-  alertGoodButtons = document.querySelectorAll('.alert-good-button'),
-  popupBG = document.querySelector('.popup-bg'),
-  popupContainer = document.querySelector('.popup-container'),
+
+const showPopupButtons = document.querySelectorAll('.show-popup'),
+  darkBG = document.querySelector('.dark-bg'),
   popup = document.querySelector('.popup'),
   closePopup = document.querySelector('.close-popup'),
-  popupSend = document.querySelector('.popup__send'),
+  popupForm = document.querySelector('.popup__form'),
+  popupFormButton = document.querySelector('.popup__form-button'),
   alertGood = document.querySelector('.alert-good'),
-  popupForm = document.querySelector('.popup__form');
+  showAlertGoodButtons = document.querySelectorAll('.show-alert-good');
 
-popup.addEventListener('click', (e) => {
-  e.stopPropagation();
+showPopupButtons.forEach((button) => {
+  button.addEventListener('click', () => openFormPopup());
 });
 
-popupSend.addEventListener('click', async (e) => {
-  e.preventDefault();
-  popupForm.classList.add('popup__form--hide');
-  alertGood.classList.add('alert-good--active');
+closePopup.addEventListener('click', () => hidePopup());
 
-  await setTimeout(() => {
-    hideAuthPopup();
-  }, 1000);
-});
-
-const hideAuthPopup = async () => {
+function hidePopup() {
+  darkBG.classList.remove('dark-bg--active');
+  popup.classList.remove('popup--active');
   document.body.classList.remove('body--active');
-  popupContainer.classList.remove('popup--active');
-  popupBG.classList.remove('popup-bg--active');
+}
+
+function openFormPopup() {
+  darkBG.classList.add('dark-bg--active');
+  popup.classList.add('popup--active');
+  popupForm.classList.add('popup__form--active');
+  closePopup.classList.add('close-popup--active');
+  document.body.classList.add('body--active');
+}
+
+popupFormButton.addEventListener('click', (e) => hideFormPopup(e));
+
+async function hideFormPopup(e) {
+  e.preventDefault();
+
+  popupForm.classList.remove('popup__form--active');
+  closePopup.classList.remove('close-popup--active');
+  openAlertGood();
 
   await setTimeout(() => {
-    popupForm.classList.remove('popup__form--hide');
-    alertGood.classList.remove('alert-good--active');
+    darkBG.classList.remove('dark-bg--active');
+    popup.classList.remove('popup--active');
+
+    hideAlertGood();
+    document.body.classList.remove('body--active');
   }, 1000);
-};
+}
 
-closePopup.addEventListener('click', (e) => {
-  e.stopPropagation();
-  hideAuthPopup();
-});
+function openAlertGood() {
+  alertGood.classList.add('alert-good--active');
+}
 
-authButtons.forEach((button) => {
-  button.addEventListener('click', (e) => {
+function hideAlertGood() {
+  alertGood.classList.remove('alert-good--active');
+}
+
+showAlertGoodButtons.forEach((button) => {
+  button.addEventListener('click', async (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    popupContainer.classList.toggle('popup--active');
-    popupBG.classList.toggle('popup-bg--active');
-    document.body.classList.toggle('body--active');
-  });
-});
 
-alertGoodButtons.forEach((button) => {
-  button.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    // popupContainer.classList.toggle('popup--good');
-    // alertGood.classList.toggle('alert-good--active');
-    popupBG.classList.toggle('popup-bg--active');
-    document.body.classList.toggle('body--active');
+    darkBG.classList.add('dark-bg--active');
+    popup.classList.add('popup--active');
+    openAlertGood();
+    setTimeout(() => {
+      darkBG.classList.remove('dark-bg--active');
+      popup.classList.remove('popup--active');
+      hideAlertGood();
+    }, 1400);
   });
-});
-
-document.body.addEventListener('click', (e) => {
-  console.log(e.target.classList);
-  e.stopPropagation();
-  hideAuthPopup();
 });
