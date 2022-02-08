@@ -609,7 +609,11 @@ body {
 }
 
 .header__logo {
-    max-width: 150px;
+    max-width: 100px;
+}
+
+.header__logo img {
+    width: 100%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -661,14 +665,57 @@ body {
     width: 24px;
 }
 
+.header__contacts .viber svg {
+    width: 100%;
+    fill: #fff;
+    transition: 0.15s;
+}
+
+.header__contacts .viber svg:hover {
+    fill: #610ec0;
+}
+
+@media screen and (max-width: 768px) {
+    .header__contacts .viber svg:hover {
+        fill: #fff;
+    }
+}
+
 .header__contacts .telegram {
     width: 24px;
+}
+
+.header__contacts .telegram svg {
+    width: 100%;
+    fill: #fff;
+    transition: 0.15s;
+}
+
+.header__contacts .telegram svg:hover {
+    fill: #279fdb;
+}
+
+@media screen and (max-width: 768px) {
+    .header__contacts .telegram svg:hover {
+        fill: #fff;
+    }
 }
 
 .header .phone-number {
     font-size: 16px;
     line-height: 20px;
     color: #fff;
+    transition: 0.15s;
+}
+
+.header .phone-number:hover {
+    color: gold;
+}
+
+@media screen and (max-width: 768px) {
+    .header .phone-number {
+        color: gold;
+    }
 }
 
 .intro {
@@ -696,25 +743,7 @@ body {
     margin-bottom: 70px;
 }
 
-.intro__buttons {
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-column-gap: 20px;
-    -moz-column-gap: 20px;
-    column-gap: 20px;
-    -ms-flex-align: center;
-    align-items: center;
-}
-
-@media screen and (max-width: 425px) {
-    .intro__buttons {
-        -ms-flex-direction: column;
-        flex-direction: column;
-        row-gap: 20px;
-    }
-}
-
-.intro__buttons .button {
+.intro .button {
     max-width: calc(180px + 90 * ((100vw - 320px) / 1600));
     height: calc(40px + 30 * ((100vw - 320px) / 1600));
     width: 100%;
@@ -731,7 +760,7 @@ body {
 }
 
 @media screen and (max-width: 425px) {
-    .intro__buttons .button {
+    .intro .button {
         max-width: 100%;
     }
 }

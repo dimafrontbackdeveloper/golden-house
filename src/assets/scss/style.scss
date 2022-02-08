@@ -365,7 +365,11 @@ body {
   // .header__logo
 
   &__logo {
-    max-width: 150px;
+    max-width: 100px;
+
+    img {
+      width: 100%;
+    }
 
     @include breakpoint(1024px) {
       display: none;
@@ -406,9 +410,41 @@ body {
     column-gap: 25px;
     .viber {
       width: 24px;
+
+      svg {
+        width: 100%;
+        fill: #fff;
+        transition: 0.15s;
+
+        &:hover {
+          fill: #610ec0;
+        }
+
+        @include breakpoint(768px) {
+          &:hover {
+            fill: #fff;
+          }
+        }
+      }
     }
     .telegram {
       width: 24px;
+
+      svg {
+        width: 100%;
+        fill: #fff;
+        transition: 0.15s;
+
+        &:hover {
+          fill: #279fdb;
+        }
+
+        @include breakpoint(768px) {
+          &:hover {
+            fill: #fff;
+          }
+        }
+      }
     }
   }
 
@@ -416,6 +452,15 @@ body {
     font-size: 16px;
     line-height: 20px;
     color: #fff;
+    transition: 0.15s;
+
+    &:hover {
+      color: gold;
+    }
+
+    @include breakpoint(768px) {
+      color: gold;
+    }
   }
 }
 
@@ -449,31 +494,20 @@ body {
 
   // .intro__buttons
 
-  &__buttons {
+  .button {
+    @include adaptiv-value('max-width', 270, 180, 0);
+    @include adaptiv-value('height', 70, 40, 0);
+    width: 100%;
+    background: $gold;
     display: flex;
-    column-gap: 20px;
     align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    @include adaptiv-value('font-size', 18, 14, 0);
+    @include adaptiv-value('line-height', 32, 17, 0);
 
     @include breakpoint(425px) {
-      flex-direction: column;
-      row-gap: 20px;
-    }
-
-    .button {
-      @include adaptiv-value('max-width', 270, 180, 0);
-      @include adaptiv-value('height', 70, 40, 0);
-      width: 100%;
-      background: $gold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      @include adaptiv-value('font-size', 18, 14, 0);
-      @include adaptiv-value('line-height', 32, 17, 0);
-
-      @include breakpoint(425px) {
-        max-width: 100%;
-      }
+      max-width: 100%;
     }
   }
 
@@ -1494,6 +1528,22 @@ body {
 
   .button-arrow {
     @include adaptiv-value('width', 90, 50, 0);
+    cursor: pointer;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: $purple;
+      transition: 0.15s;
+
+      &:hover {
+        filter: contrast(200%);
+      }
+
+      @include breakpoint(768px) {
+        filter: contrast(200%);
+      }
+    }
   }
 
   .arrow-prev {
