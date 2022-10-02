@@ -1,12 +1,3 @@
-// // убрать всем кнопкам стандартно поведение перезагрузки страницы
-// const allButtons = document.getElementsByTagName('.button');
-
-// for (let i = 0; i < allButtons.length; i++) {
-//   allButtons[i].addEventListener('click', (e) => {
-//     e.preventDefault();
-//   });
-// }
-
 // при загрузке дом, показать контент
 document.addEventListener('DOMContentLoaded', async () => {
   const loadBG = document.querySelector('.load-bg'),
@@ -77,8 +68,10 @@ burger.addEventListener('click', () => {
 
 headerNavItems.forEach((item) => {
   item.addEventListener('click', () => {
-    document.body.classList.remove('body--active');
-    burgerMenu.classList.remove('burger-menu--active');
+    document.body.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.remove('body--active');
+      burgerMenu.classList.remove('burger-menu--active');
+    });
   });
 });
 
